@@ -106,8 +106,10 @@ The workflow:
 6. After **all matrix jobs pass**, a final deploy job validates and merges the
    complete set of manifests, packs build contexts, retains older releases, and
    deploys the discovery catalog to Cloudflare Pages.
-7. Commits and pushes only changed manifests with `GITHUB_TOKEN`. Bot token pushes
-   do not trigger another workflow run.
+7. Commits only changed manifests to a temporary branch and opens a pull request
+   with `GITHUB_TOKEN`. Merges it using `gh pr merge --admin --squash` with the
+   `SANDBOX_IMAGES_MERGE_TOKEN` secret, then deletes the temporary branch. The merge
+   commit includes `[skip ci]` to avoid rebuilding already tested releases.
 
 BuildKit receives a fixed `SOURCE_DATE_EPOCH=0` and rewrites layer timestamps.
 Dockerfiles remove package indexes, logs, temporary files, and ldconfig's
@@ -119,7 +121,7 @@ avoid random or time-dependent file contents.
 
 Publishing workflows are serialized. If a build, smoke test, or registry copy
 fails, the deploy job is skipped and no catalog or committed manifests change.
-A failed Git push fails the job; rerun
+A failed Git push or admin merge fails the job; rerun
 from the current branch to publish and record its images. Some registry uploads
 can already exist after a failure, but committed manifests keep pointing at the
 previous successful catalog.
@@ -163,12 +165,14 @@ python3 scripts/discover_versions.py --write --output /tmp/new-templates.json
 
 Push this repository to `metorial/sandbox-images`, enable Actions, and run
 **Build Sandbox Images** once to publish version 1. Scheduled workflows run from
-the default branch. No custom secrets are required: the workflow uses
-`GITHUB_TOKEN` with `contents: write` and `packages: write`.
+the default branch. The workflow uses `GITHUB_TOKEN` to publish GHCR images,
+push temporary branches, and open pull requests. `SANDBOX_IMAGES_MERGE_TOKEN`
+must have repository access and belong to an actor with permission to bypass the
+default branch ruleset; it is used only for the administrator merge.
 
-Repository/org policies must allow the Actions bot to push manifest commits to
-the default branch and create GHCR packages. If branch rules require pull requests,
-configure a bot exception or adapt the final commit step to open a pull request.
+Repository/org policies must allow Actions to create pull requests and GHCR
+packages. The final step opens a PR rather than pushing directly to the protected
+default branch. The existing organization ruleset stays in place.
 Existing GHCR packages must grant this repository Actions write access. GHCR
 package visibility is configured separately: make packages public for anonymous
 consumers, or configure registry credentials for private consumers.
