@@ -6,9 +6,9 @@
   "runtime": "debian",
   "runtimeVersion": "12",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/debian-12@sha256:4254726a8240d92b77248f7ef04b239e3bef129729fa178fefe10d38159aef70",
+  "digest": "sha256:4254726a8240d92b77248f7ef04b239e3bef129729fa178fefe10d38159aef70",
   "smokeTest": [
     "bash",
     "--version"

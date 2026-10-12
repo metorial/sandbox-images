@@ -6,9 +6,9 @@
   "runtime": "bun",
   "runtimeVersion": "1.3",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/bun-1.3@sha256:13eb897094928ebf2074fcad214661e656e81dcbd2c8e4ea7a78481f3c30ddc5",
+  "digest": "sha256:13eb897094928ebf2074fcad214661e656e81dcbd2c8e4ea7a78481f3c30ddc5",
   "smokeTest": [
     "bun",
     "--version"

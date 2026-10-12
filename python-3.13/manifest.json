@@ -6,9 +6,9 @@
   "runtime": "python",
   "runtimeVersion": "3.13",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/python-3.13@sha256:c6f27e5f61afb5b2163e65322da4ae1fb2fecfc35acd426c15315eba89b688f3",
+  "digest": "sha256:c6f27e5f61afb5b2163e65322da4ae1fb2fecfc35acd426c15315eba89b688f3",
   "smokeTest": [
     "python",
     "--version"

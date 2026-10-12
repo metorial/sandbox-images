@@ -6,9 +6,9 @@
   "runtime": "ruby",
   "runtimeVersion": "4.0",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/ruby-4.0@sha256:a7d5fa6bd38b0a195d536f56b325067507d333498ab857c7bb86764d64585aa2",
+  "digest": "sha256:a7d5fa6bd38b0a195d536f56b325067507d333498ab857c7bb86764d64585aa2",
   "smokeTest": [
     "bash",
     "-ec",
