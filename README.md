@@ -95,16 +95,17 @@ publishing or editing manifests. Publishing runs only on the default branch.
 
 The workflow:
 
-1. Validates every manifest and tests the version-update logic.
-2. Builds every template with fresh base images and package indexes (`--pull`,
-   `--no-cache`) on a native ARM64 runner. The dedicated CI builder cache is
-   pruned after each build to bound disk usage while retaining release archives.
+1. Validates every manifest, tests the catalog logic, and discovers a dynamic
+   matrix from the template directories.
+2. Builds each template in its own parallel matrix job with fresh base images
+   and package indexes (`--pull`, `--no-cache`) on a native ARM64 runner.
 3. Smoke-tests each language runtime and the shared tools.
 4. Compares the OCI output digest against the committed manifest.
-5. After **all builds and tests pass**, copies changed OCI archives to GHCR with
-   their digests preserved, then updates the corresponding manifests.
-6. Packs all manifests and build contexts, retains older releases, and deploys the
-   discovery catalog to Cloudflare Pages.
+5. Each successful matrix job copies its changed OCI archive to GHCR with its
+   digest preserved and uploads its resulting manifest as a workflow artifact.
+6. After **all matrix jobs pass**, a final deploy job validates and merges the
+   complete set of manifests, packs build contexts, retains older releases, and
+   deploys the discovery catalog to Cloudflare Pages.
 7. Commits and pushes only changed manifests with `GITHUB_TOKEN`. Bot token pushes
    do not trigger another workflow run.
 
@@ -117,7 +118,8 @@ files, or base layers create a new release. Future Dockerfile additions must als
 avoid random or time-dependent file contents.
 
 Publishing workflows are serialized. If a build, smoke test, or registry copy
-fails, no manifest updates are written. A failed Git push fails the job; rerun
+fails, the deploy job is skipped and no catalog or committed manifests change.
+A failed Git push fails the job; rerun
 from the current branch to publish and record its images. Some registry uploads
 can already exist after a failure, but committed manifests keep pointing at the
 previous successful catalog.
@@ -200,7 +202,11 @@ BUILDX_BUILDER=sandbox-images python3 scripts/build.py --publish
 Pass `--authfile PATH` if using a separate registry auth file. Credential-helper
 Docker logins may require a Skopeo-compatible auth file. `--registry` changes the
 registry prefix for unpublished templates; published catalogs need an explicit
-migration. `--publish` always builds the whole catalog.
+migration. `--publish` builds the whole catalog unless `--template ID` is supplied.
+CI uses single-template publishing; only the final deploy job records the complete
+catalog in Git. `--matrix` prints the discovered matrix, and `--merge-manifests DIR`
+accepts one manifest per template, rejecting missing or unexpected results before
+applying any changes.
 
 ## Add a template
 

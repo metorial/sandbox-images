@@ -107,10 +107,38 @@ def publish(archive, repository, version, authfile):
         f'oci-archive:{archive}', f'docker://{repository}:v{version}')
 
 
+def merge_manifests(directory, registry, root=ROOT):
+    templates = discover(root)
+    expected_paths = {Path(manifest['id']) / 'manifest.json' for _, manifest in templates}
+    actual_paths = {path.relative_to(directory) for path in directory.rglob('manifest.json')}
+    if actual_paths != expected_paths:
+        raise ValueError('Matrix results must contain exactly one manifest for every template')
+
+    pending = []
+    for path, manifest in templates:
+        result = json.loads((directory / manifest['id'] / 'manifest.json').read_text())
+        if result != manifest:
+            digest = result.get('digest')
+            if not isinstance(digest, str):
+                raise ValueError(f"{manifest['id']}: missing result digest")
+            expected = next_manifest(manifest, digest, f"{registry}/{manifest['id']}")
+            if expected is None or result != expected:
+                raise ValueError(f"{manifest['id']}: invalid matrix manifest update")
+            pending.append((path, result))
+
+    for path, manifest in pending:
+        temporary = path.with_suffix('.json.tmp')
+        temporary.write_text(json.dumps(manifest, indent=2) + '\n')
+        os.replace(temporary, path)
+    return len(pending)
+
+
 def main():
     parser = argparse.ArgumentParser(description='Build, test and optionally publish sandbox templates.')
     parser.add_argument('--validate', action='store_true', help='Validate manifests without Docker')
-    parser.add_argument('--template', help='Build only this template (local checks only)')
+    parser.add_argument('--matrix', action='store_true', help='Print the validated template matrix as JSON')
+    parser.add_argument('--merge-manifests', type=Path, help='Validate and apply all matrix manifest results')
+    parser.add_argument('--template', help='Build and optionally publish only this template')
     parser.add_argument('--prune-build-cache', action='store_true',
                         help='Prune the selected dedicated Buildx builder after every build (CI)')
     parser.add_argument('--publish', action='store_true', help='Publish changed images and update manifests')
@@ -119,13 +147,18 @@ def main():
     args = parser.parse_args()
 
     templates = discover()
+    if args.matrix:
+        print(json.dumps({'template': [manifest['id'] for _, manifest in templates]}))
+        return
     if args.validate:
         print(f'Validated {len(templates)} templates')
         return
-    if args.publish and args.template:
-        parser.error('--publish always builds the entire catalog')
     if not re.fullmatch(r'[a-z0-9.-]+(?::[0-9]+)?/[a-z0-9/._-]+', args.registry):
         parser.error('--registry must be a lowercase registry/repository prefix')
+    if args.merge_manifests:
+        count = merge_manifests(args.merge_manifests, args.registry)
+        print(f'Applied {count} changed matrix manifests')
+        return
     if args.template:
         templates = [(p, m) for p, m in templates if m['id'] == args.template]
         if not templates:

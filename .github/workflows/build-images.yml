@@ -30,12 +30,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  discover:
     runs-on: ubuntu-24.04-arm
-    timeout-minutes: 120
-    permissions:
-      contents: write
-      packages: write
+    timeout-minutes: 10
+    outputs:
+      matrix: ${{ steps.templates.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
       - name: Validate Catalog and Test Version Updates
@@ -43,6 +42,23 @@ jobs:
           python3 scripts/build.py --validate
           python3 -m unittest discover -s tests -v
           python3 scripts/pack.py --output "$RUNNER_TEMP/catalog-check" --base-url https://sandbox-images.metorial.net --allow-unpublished
+      - name: Discover Template Matrix
+        id: templates
+        run: echo "matrix=$(python3 scripts/build.py --matrix)" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: discover
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 120
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.discover.outputs.matrix) }}
+    name: Build ${{ matrix.template }}
+    steps:
+      - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3
       - name: Install Registry Copier
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
@@ -55,29 +71,63 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build and Smoke Test Pull Request Images
-        if: github.event_name == 'pull_request' || github.ref != format('refs/heads/{0}', github.event.repository.default_branch)
-        run: python3 scripts/build.py --prune-build-cache
-      - name: Build, Smoke Test and Publish Changed Images
+      - name: Build and Smoke Test Template
+        env:
+          TEMPLATE: ${{ matrix.template }}
+          IMAGE_REGISTRY: ghcr.io/${{ github.repository }}
+          PUBLISH: ${{ github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+        run: |
+          publish_args=()
+          if [ "$PUBLISH" = true ]; then
+            publish_args+=(--publish)
+          fi
+          python3 scripts/build.py --template "$TEMPLATE" --prune-build-cache --registry "${IMAGE_REGISTRY,,}" "${publish_args[@]}"
+      - name: Prepare Manifest Result
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         env:
-          IMAGE_REGISTRY: ghcr.io/${{ github.repository }}
-        run: python3 scripts/build.py --publish --prune-build-cache --registry "${IMAGE_REGISTRY,,}"
-      - uses: actions/setup-node@v4
+          TEMPLATE: ${{ matrix.template }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/manifest-results/$TEMPLATE"
+          cp "$TEMPLATE/manifest.json" "$RUNNER_TEMP/manifest-results/$TEMPLATE/manifest.json"
+      - uses: actions/upload-artifact@v4
         if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+        with:
+          name: manifest-${{ matrix.template }}
+          path: ${{ runner.temp }}/manifest-results/
+          if-no-files-found: error
+          retention-days: 1
+
+  deploy:
+    needs: [discover, build]
+    if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: manifest-*
+          path: ${{ runner.temp }}/manifest-results
+          merge-multiple: true
+      - name: Merge and Validate Matrix Manifests
+        env:
+          IMAGE_REGISTRY: ghcr.io/${{ github.repository }}
+        run: |
+          python3 scripts/build.py --merge-manifests "$RUNNER_TEMP/manifest-results" --registry "${IMAGE_REGISTRY,,}"
+          python3 scripts/build.py --validate
+      - uses: actions/setup-node@v4
         with:
           node-version: '24'
       - name: Pack Catalog and Retain Previous Releases
-        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         run: python3 scripts/pack.py --base-url https://sandbox-images.metorial.net --retain-releases
       - name: Deploy Genesis Catalog to Cloudflare Pages
-        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4.149.0 pages deploy dist --project-name sandbox-images --branch main
       - name: Commit Updated Manifests
-        if: github.event_name != 'pull_request' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
         env:
           DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
         run: |
