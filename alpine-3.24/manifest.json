@@ -6,9 +6,9 @@
   "runtime": "alpine",
   "runtimeVersion": "3.24",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/alpine-3.24@sha256:0d84b95b6d8117c1e70cbc0eae0516cce06ebcaab8c019ee8d4adcb044952624",
+  "digest": "sha256:0d84b95b6d8117c1e70cbc0eae0516cce06ebcaab8c019ee8d4adcb044952624",
   "smokeTest": [
     "bash",
     "-ec",

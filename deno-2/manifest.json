@@ -6,9 +6,9 @@
   "runtime": "deno",
   "runtimeVersion": "2.9.7",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/deno-2@sha256:ae0db2f7687e0005d0483498651abcb109d440422c4563b462a01b9600148e0e",
+  "digest": "sha256:ae0db2f7687e0005d0483498651abcb109d440422c4563b462a01b9600148e0e",
   "smokeTest": [
     "deno",
     "eval",

@@ -6,9 +6,9 @@
   "runtime": "node",
   "runtimeVersion": "22",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/node-22@sha256:0066557d175ff6040359d2dc57898d961343f153c99215f7901e79c67d51c9ee",
+  "digest": "sha256:0066557d175ff6040359d2dc57898d961343f153c99215f7901e79c67d51c9ee",
   "smokeTest": [
     "node",
     "--version"

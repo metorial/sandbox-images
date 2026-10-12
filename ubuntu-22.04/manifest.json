@@ -6,9 +6,9 @@
   "runtime": "ubuntu",
   "runtimeVersion": "22.04",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/ubuntu-22.04@sha256:d907598629f9c1959e1cf030ec400af92d4f8616389517760a08033e5c35de15",
+  "digest": "sha256:d907598629f9c1959e1cf030ec400af92d4f8616389517760a08033e5c35de15",
   "smokeTest": [
     "bash",
     "--version"
