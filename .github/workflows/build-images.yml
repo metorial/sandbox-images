@@ -41,6 +41,7 @@ jobs:
         run: |
           python3 scripts/build.py --validate
           python3 -m unittest discover -s tests -v
+          python3 scripts/readme.py
           python3 scripts/pack.py --output "$RUNNER_TEMP/catalog-check" --base-url https://sandbox-images.metorial.net --allow-unpublished
       - name: Discover Template Matrix
         id: templates
@@ -126,6 +127,7 @@ jobs:
         run: |
           python3 scripts/build.py --merge-manifests "$RUNNER_TEMP/manifest-results" --registry "${IMAGE_REGISTRY,,}"
           python3 scripts/build.py --validate
+          python3 scripts/readme.py
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -143,14 +145,14 @@ jobs:
           ADMIN_MERGE_TOKEN: ${{ secrets.SANDBOX_IMAGES_MERGE_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
-          git add -- '*/manifest.json'
+          git add -- '*/manifest.json' README.md
           if git diff --cached --quiet; then
-            echo 'All images are unchanged.'
+            echo 'All images and the template list are unchanged.'
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          update_branch="codex/sandbox-image-versions-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          update_branch="automation/sandbox-image-versions-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           git switch -c "$update_branch"
           git commit -m 'chore: update sandbox image versions [skip ci]'
           update_commit=$(git rev-parse HEAD)

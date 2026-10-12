@@ -25,6 +25,7 @@ jobs:
         run: |
           python3 scripts/discover_versions.py --write --output /tmp/new-templates.json
           python3 scripts/build.py --validate
+          python3 scripts/readme.py
       - uses: docker/setup-buildx-action@v3
       - name: Build and Smoke Test New Tracks
         run: |
@@ -37,7 +38,7 @@ jobs:
           PY
       - uses: peter-evans/create-pull-request@v7
         with:
-          branch: codex/new-sandbox-versions
+          branch: automation/new-sandbox-versions
           delete-branch: true
           commit-message: 'chore: add new sandbox runtime tracks'
           title: 'Add newly released sandbox runtime tracks'
@@ -50,3 +51,4 @@ jobs:
           add-paths: |
             */build/**
             */manifest.json
+            README.md
