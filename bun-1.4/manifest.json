@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "bun-1.4",
+  "name": "Bun 1.4",
+  "description": "Bun 1.4 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "bun",
+  "runtimeVersion": "1.4",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bun",
+    "--version"
+  ]
+}

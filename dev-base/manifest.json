@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "dev-base",
+  "name": "Development Base",
+  "description": "Development Base with shared sandbox development tools.",
+  "runtime": "development",
+  "runtimeVersion": "node24-python3.13-bun1.3",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "node --version; python --version; bun --version; npm --version; pnpm --version; tsc --version; uv --version; uvx --version; jq --version; rg --version; sqlite3 :memory: \"select 1\""
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "php-8.5",
+  "name": "PHP 8.5",
+  "description": "PHP 8.5 with shared sandbox development tools.",
+  "runtime": "php",
+  "runtimeVersion": "8.5",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "php --version; composer --version; php -r 'foreach ([\"intl\",\"mbstring\",\"pdo_mysql\",\"pdo_pgsql\",\"pdo_sqlite\",\"zip\",\"Zend OPcache\"] as $e) { if (!extension_loaded($e)) { throw new Exception($e); } }'"
+  ]
+}

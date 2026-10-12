@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "node-24",
+  "name": "Node.js 24",
+  "description": "Node.js 24 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "node",
+  "runtimeVersion": "24",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "node",
+    "--version"
+  ]
+}

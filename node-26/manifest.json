@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "node-26",
+  "name": "Node.js 26",
+  "description": "Node.js 26 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "node",
+  "runtimeVersion": "26",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "node",
+    "--version"
+  ]
+}

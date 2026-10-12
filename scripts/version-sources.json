@@ -1,0 +1,108 @@
+[
+  {
+    "family": "ubuntu",
+    "seed": "ubuntu-24.04",
+    "repository": "library/ubuntu",
+    "filter": ".04",
+    "pattern": "(?P<track>[0-9]{2}\\.04)",
+    "from": "ubuntu:{track}",
+    "ltsOnly": true
+  },
+  {
+    "family": "debian",
+    "seed": "debian-13",
+    "repository": "library/debian",
+    "filter": "-slim",
+    "pattern": "(?P<track>[0-9]+)-slim",
+    "from": "debian:{track}-slim"
+  },
+  {
+    "family": "node",
+    "seed": "node-26",
+    "repository": "library/node",
+    "filter": "-bookworm-slim",
+    "pattern": "(?P<track>[0-9]+)-bookworm-slim",
+    "from": "node:{track}-bookworm-slim"
+  },
+  {
+    "family": "bun",
+    "seed": "bun-1.3",
+    "repository": "oven/bun",
+    "filter": "-debian",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)-debian",
+    "from": "oven/bun:{track}-debian"
+  },
+  {
+    "family": "python",
+    "seed": "python-3.14",
+    "repository": "library/python",
+    "filter": "-slim-bookworm",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)-slim-bookworm",
+    "from": "python:{track}-slim-bookworm"
+  },
+  {
+    "family": "go",
+    "seed": "go-1.27",
+    "repository": "library/golang",
+    "filter": "-bookworm",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)-bookworm",
+    "from": "golang:{track}-bookworm"
+  },
+  {
+    "family": "rust",
+    "seed": "rust-1",
+    "repository": "library/rust",
+    "filter": "-slim-bookworm",
+    "pattern": "(?P<track>[0-9]+)-slim-bookworm",
+    "from": "rust:{track}-slim-bookworm"
+  },
+  {
+    "family": "java",
+    "seed": "java-25",
+    "repository": "library/maven",
+    "filter": "eclipse-temurin",
+    "pattern": "3-eclipse-temurin-(?P<track>[0-9]+)",
+    "from": "maven:3-eclipse-temurin-{track}",
+    "javaLtsOnly": true
+  },
+  {
+    "family": "ruby",
+    "seed": "ruby-3.4",
+    "repository": "library/ruby",
+    "filter": "-slim-bookworm",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)-slim-bookworm",
+    "from": "ruby:{track}-slim-bookworm"
+  },
+  {
+    "family": "php",
+    "seed": "php-8.4",
+    "repository": "library/php",
+    "filter": "-cli-bookworm",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)-cli-bookworm",
+    "from": "php:{track}-cli-bookworm"
+  },
+  {
+    "family": "alpine",
+    "seed": "alpine-3.23",
+    "repository": "library/alpine",
+    "filter": "",
+    "pattern": "(?P<track>[0-9]+\\.[0-9]+)",
+    "from": "alpine:{track}"
+  },
+  {
+    "family": "deno",
+    "seed": "deno-2",
+    "repository": "denoland/deno",
+    "filter": "debian-",
+    "pattern": "debian-(?P<track>[0-9]+)\\.[0-9]+\\.[0-9]+",
+    "from": "denoland/deno:{tag}"
+  },
+  {
+    "family": "dotnet",
+    "seed": "dotnet-10",
+    "registry": "mcr",
+    "repository": "dotnet/sdk",
+    "pattern": "(?P<track>[0-9]+)\\.0-noble",
+    "from": "mcr.microsoft.com/dotnet/sdk:{tag}"
+  }
+]

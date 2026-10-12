@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "media",
+  "name": "Media Processing",
+  "description": "Media Processing with shared sandbox development tools.",
+  "runtime": "python",
+  "runtimeVersion": "3.13",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "ffmpeg -version; convert -version; python -c \"from PIL import Image; import cv2; import numpy as n; Image.new('RGB', (16,16)).save('/tmp/image.png'); assert cv2.imread('/tmp/image.png').shape == (16,16,3)\"; ffmpeg -v error -f lavfi -i color=c=black:s=16x16:d=1 -c:v libx264 /tmp/video.mp4"
+  ]
+}

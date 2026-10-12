@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "deno-2",
+  "name": "Deno 2",
+  "description": "Deno 2 with shared sandbox development tools.",
+  "runtime": "deno",
+  "runtimeVersion": "2.9.7",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "deno",
+    "eval",
+    "console.log(Deno.version); if (1 + 1 !== 2) throw new Error(\"failed\")"
+  ]
+}

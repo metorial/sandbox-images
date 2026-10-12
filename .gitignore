@@ -147,3 +147,12 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Python build tooling
+__pycache__/
+*.pyc
+
+# Cloudflare catalog output
+dist/
+.wrangler/
+.cloudflare/

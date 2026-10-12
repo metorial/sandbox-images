@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "documents",
+  "name": "Document Processing",
+  "description": "Document Processing with shared sandbox development tools.",
+  "runtime": "python",
+  "runtimeVersion": "3.13",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "python",
+    "/opt/sandbox/smoke-test.py"
+  ]
+}

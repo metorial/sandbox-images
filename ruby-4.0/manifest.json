@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "ruby-4.0",
+  "name": "Ruby 4.0",
+  "description": "Ruby 4.0 with shared sandbox development tools.",
+  "runtime": "ruby",
+  "runtimeVersion": "4.0",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "ruby --version; bundle --version; ruby -e \"require 'openssl'; require 'json'; puts JSON.generate(ready: true)\""
+  ]
+}

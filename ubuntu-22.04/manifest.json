@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "ubuntu-22.04",
+  "name": "Ubuntu 22.04",
+  "description": "Ubuntu 22.04 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "ubuntu",
+  "runtimeVersion": "22.04",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "--version"
+  ]
+}

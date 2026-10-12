@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "alpine-3.24",
+  "name": "Alpine 3.24",
+  "description": "Alpine 3.24 with shared sandbox development tools.",
+  "runtime": "alpine",
+  "runtimeVersion": "3.24",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "cat /etc/alpine-release; printf \"int main(void) { return 0; }\" > /tmp/main.c; cc /tmp/main.c -o /tmp/main; /tmp/main"
+  ]
+}

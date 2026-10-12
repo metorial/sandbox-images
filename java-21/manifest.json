@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "java-21",
+  "name": "Java 21",
+  "description": "Java 21 with shared sandbox development tools.",
+  "runtime": "java",
+  "runtimeVersion": "21",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "java -version; javac -version; mvn --version; gradle --no-daemon --version"
+  ]
+}

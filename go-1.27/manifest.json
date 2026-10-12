@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "go-1.27",
+  "name": "Go 1.27",
+  "description": "Go 1.27 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "go",
+  "runtimeVersion": "1.27",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "go",
+    "version"
+  ]
+}

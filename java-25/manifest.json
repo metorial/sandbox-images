@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "java-25",
+  "name": "Java 25",
+  "description": "Java 25 with shared sandbox development tools.",
+  "runtime": "java",
+  "runtimeVersion": "25",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "java -version; javac -version; mvn --version; gradle --no-daemon --version"
+  ]
+}

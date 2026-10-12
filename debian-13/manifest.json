@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "debian-13",
+  "name": "Debian 13",
+  "description": "Debian 13 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "debian",
+  "runtimeVersion": "13",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "--version"
+  ]
+}

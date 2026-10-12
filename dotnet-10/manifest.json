@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "dotnet-10",
+  "name": ".NET 10 SDK",
+  "description": ".NET 10 SDK with shared sandbox development tools.",
+  "runtime": "dotnet",
+  "runtimeVersion": "10",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "dotnet --info; dotnet new console --no-restore -o /tmp/hello"
+  ]
+}

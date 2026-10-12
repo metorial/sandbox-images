@@ -1,0 +1,52 @@
+name: Discover Sandbox Versions
+
+on:
+  schedule:
+    - cron: '30 1,13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sandbox-version-discovery
+  cancel-in-progress: false
+
+jobs:
+  discover:
+    runs-on: ubuntu-24.04-arm
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test Discovery and Catalog Logic
+        run: python3 -m unittest discover -s tests -v
+      - name: Discover and Generate Missing Tracks
+        run: |
+          python3 scripts/discover_versions.py --write --output /tmp/new-templates.json
+          python3 scripts/build.py --validate
+      - uses: docker/setup-buildx-action@v3
+      - name: Build and Smoke Test New Tracks
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+          for identifier in json.load(open('/tmp/new-templates.json')):
+              subprocess.run(['python3', 'scripts/build.py', '--template', identifier,
+                              '--prune-build-cache'], check=True)
+          PY
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: codex/new-sandbox-versions
+          delete-branch: true
+          commit-message: 'chore: add new sandbox runtime tracks'
+          title: 'Add newly released sandbox runtime tracks'
+          body: |
+            Adds newer stable upstream language and operating-system tracks discovered from official image tags.
+
+            Each new template passed a linux/arm64 build and its runtime/tool smoke tests in the discovery workflow. Manifests start at version 0; the image publishing workflow publishes them after merge.
+
+            Specialized dependency pins and combined development environments are maintained separately.
+          add-paths: |
+            */build/**
+            */manifest.json

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "rust-1",
+  "name": "Rust 1",
+  "description": "Rust 1 with shared sandbox development tools.",
+  "runtime": "rust",
+  "runtimeVersion": "1",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "bash",
+    "-ec",
+    "rustc --version; cargo --version; cargo fmt --version; cargo clippy --version; printf '%s\\n' 'fn main() { println!(\"ready\"); }' > /tmp/main.rs; rustc /tmp/main.rs -o /tmp/main; /tmp/main"
+  ]
+}

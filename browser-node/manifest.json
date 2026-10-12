@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "browser-node",
+  "name": "Node Browser Automation",
+  "description": "Node Browser Automation with shared sandbox development tools.",
+  "runtime": "node",
+  "runtimeVersion": "24-playwright1.64.0",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "node",
+    "/opt/sandbox/smoke-test.cjs"
+  ]
+}

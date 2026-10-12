@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "python-data",
+  "name": "Python Data Analysis",
+  "description": "Python Data Analysis with shared sandbox development tools.",
+  "runtime": "python",
+  "runtimeVersion": "3.13",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "python",
+    "-c",
+    "import numpy,pandas,scipy,matplotlib,seaborn,polars,duckdb,pyarrow; matplotlib.use(\"Agg\"); import matplotlib.pyplot as p; p.plot([1,2]); p.savefig(\"/tmp/chart.png\"); assert duckdb.sql(\"select 42\").fetchone()[0] == 42; print(\"Data libraries and plotting passed\")"
+  ]
+}

@@ -1,0 +1,6 @@
+*
+!Dockerfile
+!requirements.txt
+!package.json
+!package-lock.json
+!smoke-test.*
