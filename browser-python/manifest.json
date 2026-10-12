@@ -6,9 +6,9 @@
   "runtime": "python",
   "runtimeVersion": "3.13-playwright1.63.0",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/browser-python@sha256:92b5fafeea54edb29f23d59b528b0e3b16aeb9b891549ba54cadc275b9a8132b",
+  "digest": "sha256:92b5fafeea54edb29f23d59b528b0e3b16aeb9b891549ba54cadc275b9a8132b",
   "smokeTest": [
     "python",
     "/opt/sandbox/smoke-test.py"

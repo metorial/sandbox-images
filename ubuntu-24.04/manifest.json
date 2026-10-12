@@ -6,9 +6,9 @@
   "runtime": "ubuntu",
   "runtimeVersion": "24.04",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/ubuntu-24.04@sha256:42167dd87e1085876e9f0af4badf6b2cbfc9528205156db5abd9e324ba359df0",
+  "digest": "sha256:42167dd87e1085876e9f0af4badf6b2cbfc9528205156db5abd9e324ba359df0",
   "smokeTest": [
     "bash",
     "--version"

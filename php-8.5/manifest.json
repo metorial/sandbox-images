@@ -6,9 +6,9 @@
   "runtime": "php",
   "runtimeVersion": "8.5",
   "platform": "linux/arm64",
-  "version": 0,
-  "image": null,
-  "digest": null,
+  "version": 1,
+  "image": "ghcr.io/metorial/sandbox-images/php-8.5@sha256:5634f7d8396fb3d7b34f81828e6ef5a12dc4fe4042b49704b1f586d56f0aa973",
+  "digest": "sha256:5634f7d8396fb3d7b34f81828e6ef5a12dc4fe4042b49704b1f586d56f0aa973",
   "smokeTest": [
     "bash",
     "-ec",
