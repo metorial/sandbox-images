@@ -6,9 +6,9 @@
   "runtime": "development",
   "runtimeVersion": "node24-python3.13-bun1.3",
   "platform": "linux/arm64",
-  "version": 2,
-  "image": "ghcr.io/metorial/sandbox-images/dev-base@sha256:ae019a1c5e3db87130cdd91b27ff5a49ba90dfef59d5b14f8d52aae43d22340d",
-  "digest": "sha256:ae019a1c5e3db87130cdd91b27ff5a49ba90dfef59d5b14f8d52aae43d22340d",
+  "version": 3,
+  "image": "ghcr.io/metorial/sandbox-images/dev-base@sha256:ecbf0a6dc07439b4dcc925dd5100a43b583ddf1fac3f82ee8a83375274303161",
+  "digest": "sha256:ecbf0a6dc07439b4dcc925dd5100a43b583ddf1fac3f82ee8a83375274303161",
   "smokeTest": [
     "bash",
     "-ec",
