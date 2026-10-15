@@ -6,9 +6,9 @@
   "runtime": "dotnet",
   "runtimeVersion": "10",
   "platform": "linux/arm64",
-  "version": 2,
-  "image": "ghcr.io/metorial/sandbox-images/dotnet-10@sha256:22d39eb45983c28a47581c0897e8709ac275730549972113f94b8f89e2abbeb3",
-  "digest": "sha256:22d39eb45983c28a47581c0897e8709ac275730549972113f94b8f89e2abbeb3",
+  "version": 3,
+  "image": "ghcr.io/metorial/sandbox-images/dotnet-10@sha256:bc073df53270a88696efefa8b602bd2f3c0e546f57749c1217346f9c11000b55",
+  "digest": "sha256:bc073df53270a88696efefa8b602bd2f3c0e546f57749c1217346f9c11000b55",
   "smokeTest": [
     "bash",
     "-ec",
