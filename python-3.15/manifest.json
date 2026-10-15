@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "python-3.15",
+  "name": "Python 3.15",
+  "description": "Python 3.15 sandbox with Bash, Git, curl, certificates and native build tools.",
+  "runtime": "python",
+  "runtimeVersion": "3.15",
+  "platform": "linux/arm64",
+  "version": 0,
+  "image": null,
+  "digest": null,
+  "smokeTest": [
+    "python",
+    "--version"
+  ]
+}
