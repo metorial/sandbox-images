@@ -6,9 +6,9 @@
   "runtime": "python",
   "runtimeVersion": "3.12",
   "platform": "linux/arm64",
-  "version": 2,
-  "image": "ghcr.io/metorial/sandbox-images/python-3.12@sha256:1b9c5b498ea7c9f0f4c4b477b5285cc9c6a7889105d1112e310676aca12da7f4",
-  "digest": "sha256:1b9c5b498ea7c9f0f4c4b477b5285cc9c6a7889105d1112e310676aca12da7f4",
+  "version": 3,
+  "image": "ghcr.io/metorial/sandbox-images/python-3.12@sha256:bc431f92ff14632a5ef6c2b6bb241adeac73b73e54e7d0728f0c4bbfad0106ce",
+  "digest": "sha256:bc431f92ff14632a5ef6c2b6bb241adeac73b73e54e7d0728f0c4bbfad0106ce",
   "smokeTest": [
     "python",
     "--version"
