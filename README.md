@@ -29,6 +29,7 @@
 | [python-3.12](python-3.12/) | python | 3.12 | Python 3.12 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-3.13](python-3.13/) | python | 3.13 | Python 3.13 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-3.14](python-3.14/) | python | 3.14 | Python 3.14 sandbox with Bash, Git, curl, certificates and native build tools. |
+| [python-3.15](python-3.15/) | python | 3.15 | Python 3.15 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-data](python-data/) | python | 3.13 | Python Data Analysis with shared sandbox development tools. |
 | [ruby-3.4](ruby-3.4/) | ruby | 3.4 | Ruby 3.4 with shared sandbox development tools. |
 | [ruby-4.0](ruby-4.0/) | ruby | 4.0 | Ruby 4.0 with shared sandbox development tools. |
