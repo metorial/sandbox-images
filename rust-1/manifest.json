@@ -6,9 +6,9 @@
   "runtime": "rust",
   "runtimeVersion": "1",
   "platform": "linux/arm64",
-  "version": 7,
-  "image": "ghcr.io/metorial/sandbox-images/rust-1@sha256:1c3858d697a551698e8e26284441008d4f5eacd368d06f90b08a92cde7321339",
-  "digest": "sha256:1c3858d697a551698e8e26284441008d4f5eacd368d06f90b08a92cde7321339",
+  "version": 8,
+  "image": "ghcr.io/metorial/sandbox-images/rust-1@sha256:ce4f844a520ac9d12127182b3a11ffebe8e27476e758a2d2bb6f86530575b693",
+  "digest": "sha256:ce4f844a520ac9d12127182b3a11ffebe8e27476e758a2d2bb6f86530575b693",
   "smokeTest": [
     "bash",
     "-ec",
