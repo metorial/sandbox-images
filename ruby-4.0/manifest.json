@@ -6,9 +6,9 @@
   "runtime": "ruby",
   "runtimeVersion": "4.0",
   "platform": "linux/arm64",
-  "version": 3,
-  "image": "ghcr.io/metorial/sandbox-images/ruby-4.0@sha256:aaeb322e8ae55ac719a7c3963a10e940881f1611bbff916c3c5b8b9d8c50f86c",
-  "digest": "sha256:aaeb322e8ae55ac719a7c3963a10e940881f1611bbff916c3c5b8b9d8c50f86c",
+  "version": 4,
+  "image": "ghcr.io/metorial/sandbox-images/ruby-4.0@sha256:d69b3aac359c93f3cc52466430861f143d205e78ee82daae044ddef520bb957b",
+  "digest": "sha256:d69b3aac359c93f3cc52466430861f143d205e78ee82daae044ddef520bb957b",
   "smokeTest": [
     "bash",
     "-ec",

@@ -6,9 +6,9 @@
   "runtime": "bun",
   "runtimeVersion": "1.2",
   "platform": "linux/arm64",
-  "version": 3,
-  "image": "ghcr.io/metorial/sandbox-images/bun-1.2@sha256:f31d636aa516efa8e70d7f3149f6a56d48917a10947c19a9f2df45899c4652c6",
-  "digest": "sha256:f31d636aa516efa8e70d7f3149f6a56d48917a10947c19a9f2df45899c4652c6",
+  "version": 4,
+  "image": "ghcr.io/metorial/sandbox-images/bun-1.2@sha256:41f82972f26a0377f1c9e535d772d4ea8710a6f9bd3b0c565d335ba89ddbaefe",
+  "digest": "sha256:41f82972f26a0377f1c9e535d772d4ea8710a6f9bd3b0c565d335ba89ddbaefe",
   "smokeTest": [
     "bun",
     "--version"
