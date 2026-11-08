@@ -6,9 +6,9 @@
   "runtime": "ubuntu",
   "runtimeVersion": "24.04",
   "platform": "linux/arm64",
-  "version": 5,
-  "image": "ghcr.io/metorial/sandbox-images/ubuntu-24.04@sha256:089b64ddc40344cacb60aea97cabfda84b783ff2438b60d5d155e78b66a953e3",
-  "digest": "sha256:089b64ddc40344cacb60aea97cabfda84b783ff2438b60d5d155e78b66a953e3",
+  "version": 6,
+  "image": "ghcr.io/metorial/sandbox-images/ubuntu-24.04@sha256:2dc70b0b80627987c4e5a4acd1efa1725c7ad3317afbc61d43bec2329948a7ed",
+  "digest": "sha256:2dc70b0b80627987c4e5a4acd1efa1725c7ad3317afbc61d43bec2329948a7ed",
   "smokeTest": [
     "bash",
     "--version"

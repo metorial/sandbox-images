@@ -6,9 +6,9 @@
   "runtime": "debian",
   "runtimeVersion": "12",
   "platform": "linux/arm64",
-  "version": 4,
-  "image": "ghcr.io/metorial/sandbox-images/debian-12@sha256:f2936d73f905a78a0674dda70a953a76ddf40cd05ad769ad073415b855b56f23",
-  "digest": "sha256:f2936d73f905a78a0674dda70a953a76ddf40cd05ad769ad073415b855b56f23",
+  "version": 5,
+  "image": "ghcr.io/metorial/sandbox-images/debian-12@sha256:0373e55afd252f96f1ee7c2fdae0022207bd0d405699f02398451e68b298ae2f",
+  "digest": "sha256:0373e55afd252f96f1ee7c2fdae0022207bd0d405699f02398451e68b298ae2f",
   "smokeTest": [
     "bash",
     "--version"

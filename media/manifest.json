@@ -6,9 +6,9 @@
   "runtime": "python",
   "runtimeVersion": "3.13",
   "platform": "linux/arm64",
-  "version": 4,
-  "image": "ghcr.io/metorial/sandbox-images/media@sha256:98b924804096a69e4e9890d3d994f6e3f85e0f8b2f3b2cbde623f7ffc94903ca",
-  "digest": "sha256:98b924804096a69e4e9890d3d994f6e3f85e0f8b2f3b2cbde623f7ffc94903ca",
+  "version": 5,
+  "image": "ghcr.io/metorial/sandbox-images/media@sha256:9b4c2c29aaf39c539659ea35b0258e55a88cfc7259375194d3f347e93a8bfabc",
+  "digest": "sha256:9b4c2c29aaf39c539659ea35b0258e55a88cfc7259375194d3f347e93a8bfabc",
   "smokeTest": [
     "bash",
     "-ec",
