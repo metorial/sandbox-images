@@ -6,9 +6,9 @@
   "runtime": "go",
   "runtimeVersion": "1.26",
   "platform": "linux/arm64",
-  "version": 3,
-  "image": "ghcr.io/metorial/sandbox-images/go-1.26@sha256:c324dde394298ac348047ddb7759fde658f21c78ce0785504a3d5437239c268b",
-  "digest": "sha256:c324dde394298ac348047ddb7759fde658f21c78ce0785504a3d5437239c268b",
+  "version": 4,
+  "image": "ghcr.io/metorial/sandbox-images/go-1.26@sha256:8bb21f68542a1c4052ed36221ef397cdbf8072b3ebf042c304ff2d5cad4bf6a2",
+  "digest": "sha256:8bb21f68542a1c4052ed36221ef397cdbf8072b3ebf042c304ff2d5cad4bf6a2",
   "smokeTest": [
     "go",
     "version"
