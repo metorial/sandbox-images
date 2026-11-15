@@ -6,9 +6,9 @@
   "runtime": "node",
   "runtimeVersion": "24-playwright1.64.0",
   "platform": "linux/arm64",
-  "version": 6,
-  "image": "ghcr.io/metorial/sandbox-images/browser-node@sha256:b51e7334cd5a9a8ae56dc6e3dfbc013f0329ac575014a991cf6995637bdb1079",
-  "digest": "sha256:b51e7334cd5a9a8ae56dc6e3dfbc013f0329ac575014a991cf6995637bdb1079",
+  "version": 7,
+  "image": "ghcr.io/metorial/sandbox-images/browser-node@sha256:36d1482709bb474f63f921958100c3116873736078f41b29a86ded03bf1f49e7",
+  "digest": "sha256:36d1482709bb474f63f921958100c3116873736078f41b29a86ded03bf1f49e7",
   "smokeTest": [
     "node",
     "/opt/sandbox/smoke-test.cjs"
