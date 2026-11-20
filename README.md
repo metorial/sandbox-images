@@ -25,10 +25,12 @@
 | [node-26](node-26/) | node | 26 | Node.js 26 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [php-8.4](php-8.4/) | php | 8.4 | PHP 8.4 with shared sandbox development tools. |
 | [php-8.5](php-8.5/) | php | 8.5 | PHP 8.5 with shared sandbox development tools. |
+| [php-8.6](php-8.6/) | php | 8.6 | PHP 8.6 with shared sandbox development tools. |
 | [python-3.11](python-3.11/) | python | 3.11 | Python 3.11 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-3.12](python-3.12/) | python | 3.12 | Python 3.12 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-3.13](python-3.13/) | python | 3.13 | Python 3.13 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-3.14](python-3.14/) | python | 3.14 | Python 3.14 sandbox with Bash, Git, curl, certificates and native build tools. |
+| [python-3.15](python-3.15/) | python | 3.15 | Python 3.15 sandbox with Bash, Git, curl, certificates and native build tools. |
 | [python-data](python-data/) | python | 3.13 | Python Data Analysis with shared sandbox development tools. |
 | [ruby-3.4](ruby-3.4/) | ruby | 3.4 | Ruby 3.4 with shared sandbox development tools. |
 | [ruby-4.0](ruby-4.0/) | ruby | 4.0 | Ruby 4.0 with shared sandbox development tools. |
