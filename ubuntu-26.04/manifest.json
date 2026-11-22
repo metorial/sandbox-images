@@ -6,9 +6,9 @@
   "runtime": "ubuntu",
   "runtimeVersion": "26.04",
   "platform": "linux/arm64",
-  "version": 6,
-  "image": "ghcr.io/metorial/sandbox-images/ubuntu-26.04@sha256:ded4c847f3390d6a8f27616bf54c1922cd4766eaed89a6082380d7275d6d2f72",
-  "digest": "sha256:ded4c847f3390d6a8f27616bf54c1922cd4766eaed89a6082380d7275d6d2f72",
+  "version": 7,
+  "image": "ghcr.io/metorial/sandbox-images/ubuntu-26.04@sha256:836ee2bfefdf950fafbf846e56805a708a539797c4507595a25be6f597d781fe",
+  "digest": "sha256:836ee2bfefdf950fafbf846e56805a708a539797c4507595a25be6f597d781fe",
   "smokeTest": [
     "bash",
     "--version"

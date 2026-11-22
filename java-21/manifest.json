@@ -6,9 +6,9 @@
   "runtime": "java",
   "runtimeVersion": "21",
   "platform": "linux/arm64",
-  "version": 6,
-  "image": "ghcr.io/metorial/sandbox-images/java-21@sha256:54a73bc932ddc4eef081b4418e42cc7f60e327c686c32af945700ebed062f17f",
-  "digest": "sha256:54a73bc932ddc4eef081b4418e42cc7f60e327c686c32af945700ebed062f17f",
+  "version": 7,
+  "image": "ghcr.io/metorial/sandbox-images/java-21@sha256:43e42fcd5a20c47aa5a1817e615f4ec87af1b6a874b7af6b9dd8bbd8d78d254e",
+  "digest": "sha256:43e42fcd5a20c47aa5a1817e615f4ec87af1b6a874b7af6b9dd8bbd8d78d254e",
   "smokeTest": [
     "bash",
     "-ec",

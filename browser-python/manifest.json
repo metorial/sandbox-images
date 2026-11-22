@@ -6,9 +6,9 @@
   "runtime": "python",
   "runtimeVersion": "3.13-playwright1.63.0",
   "platform": "linux/arm64",
-  "version": 11,
-  "image": "ghcr.io/metorial/sandbox-images/browser-python@sha256:456c8cb5d9c26e08b396547228474026ad81406cb4abf8c70180aa37be071c84",
-  "digest": "sha256:456c8cb5d9c26e08b396547228474026ad81406cb4abf8c70180aa37be071c84",
+  "version": 12,
+  "image": "ghcr.io/metorial/sandbox-images/browser-python@sha256:53d61197656bc48543511810cfc1e319b046d4c52a7c1e5a67ffff3b40db7dae",
+  "digest": "sha256:53d61197656bc48543511810cfc1e319b046d4c52a7c1e5a67ffff3b40db7dae",
   "smokeTest": [
     "python",
     "/opt/sandbox/smoke-test.py"
