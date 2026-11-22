@@ -6,9 +6,9 @@
   "runtime": "node",
   "runtimeVersion": "26",
   "platform": "linux/arm64",
-  "version": 7,
-  "image": "ghcr.io/metorial/sandbox-images/node-26@sha256:95cfd18664b2d5116d197d1ebd3dfbd6317b0a9890652d611018b551642ecdc4",
-  "digest": "sha256:95cfd18664b2d5116d197d1ebd3dfbd6317b0a9890652d611018b551642ecdc4",
+  "version": 8,
+  "image": "ghcr.io/metorial/sandbox-images/node-26@sha256:35178e3b97d16aca552b33e6188ca6beb2642466998cc0e38bd3ec85969455a4",
+  "digest": "sha256:35178e3b97d16aca552b33e6188ca6beb2642466998cc0e38bd3ec85969455a4",
   "smokeTest": [
     "node",
     "--version"

@@ -6,9 +6,9 @@
   "runtime": "ubuntu",
   "runtimeVersion": "22.04",
   "platform": "linux/arm64",
-  "version": 6,
-  "image": "ghcr.io/metorial/sandbox-images/ubuntu-22.04@sha256:0f4446c30481327545f5744e20e7f1ef53a379b18ca17cf23d8c93b54821a810",
-  "digest": "sha256:0f4446c30481327545f5744e20e7f1ef53a379b18ca17cf23d8c93b54821a810",
+  "version": 7,
+  "image": "ghcr.io/metorial/sandbox-images/ubuntu-22.04@sha256:39f6cccbd96c95acbf6173ff16841825c2f0fdb3001ef2538bcd722902e8221f",
+  "digest": "sha256:39f6cccbd96c95acbf6173ff16841825c2f0fdb3001ef2538bcd722902e8221f",
   "smokeTest": [
     "bash",
     "--version"
